@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Shake it!</title>
+    <meta name="description" content="Whip web app for funny moments">
+    <meta name="author" content="J. Manrique Lopez - @jsmanrique">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="stylesheets/tako.css">
+    <link rel="stylesheet" href="stylesheets/tako.theme.css">
+    <style>
+        #main {
+            text-align: center;
+        }
+        #main img {
+            margin-top: 0.5em;
+        }
+        #sound {
+            margin-top: 0.8em;
+            width: 80%;
+        }
+        .refer {
+            font-weight: 900;
+            color: #bbb;
+        }
+    </style>
+    <script src="shake.js"></script>
+</head>
+<body>
+    <audio id="whip" src="WhipCrack.mp3" preload="auto"></audio>
+    <aside class="full">
+    <!-- <aside> -->
+        <header>
+            <h1><img src="img/whip-60.png" alt=""><br/>Zasca!</h1>
+            <p><span class="refer">Tako</span> and <span class="refer">shake.js</span> demo app for fun</p>
+            <p>by <span class="refer">@jsmanrique</span></p>
+        </header>
+    </aside>
+
+    <article id="section_1">
+        <header>
+            <nav class="left">
+                <button class="icon info-circled" data-action="aside"></button>
+            </nav>
+            <h1>Zasca!</h1>
+        </header>
+        <section id="main">
+            <img src="img/whip-128.png" alt="Zasca!">
+            <p>Whip or hit the button</p>
+            <button class="icon off biggest red" id="sound"> hit me</button>
+        </section>
+    </article>
+
+    <script src="js/tako.components.js"></script>
+    <script src="js/tako.debug.js"></script>
+    <script>
+        window.addEventListener('shake', shakeEventDidOccur, false);
+
+        //function to call when shake occurs
+        function shakeEventDidOccur () {
+            document.getElementById('whip').play();
+            Tako.Notification.custom('ZASCA!', 'ouch!',true,'', null, function(){console.log("SUCCESS CB");})
+        };
+
+        Tako.onReady(function(){
+            console.log("LOADED");
+        });
+
+        Tako.init();
+
+        $('#sound').bind('tap', function(){
+            document.getElementById('whip').play();
+            Tako.Notification.custom('ZASCA!', 'ouch!',true,'', null, function(){console.log("SUCCESS CB");})
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Zasca!",
+  "description": "Whip sound on sake, based on Sheldon Cooper shake app",
+  "launch_path": "/index.html",
+  "icons": {
+	"60": "/img/whip-60.png",
+	"128": "/img/whip-128.png"
+  },
+  "developer": {
+    "name": "J. Manrique Lopez de la Fuente",
+    "url": "http://jsmanrique.es"
+  },
+  "default_locale": "en",
+  "version": "1.1"
+}
